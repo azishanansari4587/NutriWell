@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriWell Pharmaceuticals — Nurturing Wellness, Enriching Lives</title>
+  <meta name="description" content="NutriWell Pharmaceuticals — trusted pharma & nutraceutical products. Quality medicines for everyday wellness." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="images/NutriWell.svg" alt="NutriWell Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="#" class="active" onclick="showPage('home',this)">Home</a>
+      <a href="#" onclick="showPage('products',this)">Products</a>
+      <a href="#" onclick="showPage('team',this)">About us</a>
+      <a href="#" onclick="showPage('purpose',this)">Purpose</a>
+      <!-- <a href="#" onclick="showPage('events',this)">Events</a> -->
+      <a href="#" onclick="showPage('healthtips',this)">Health Tips</a>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" onclick="showPage('home',this);toggleMenu()">Home</a>
+    <a href="#" onclick="showPage('products',this);toggleMenu()">Products</a>
+    <a href="#" onclick="showPage('about',this);toggleMenu()">About us</a>
+    <a href="#" onclick="showPage('purpose',this);toggleMenu()">Purpose</a>
+    <!-- <a href="#" onclick="showPage('events',this);toggleMenu()">Events</a> -->
+    <a href="#" onclick="showPage('healthtips',this);toggleMenu()">Health Tips</a>
+  </div>
+</nav>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div id="page-home" class="page active">
+
+  <!-- Hero Slider — image only -->
+  <div class="hero-slider">
+    <div class="slide slide-1 active">
+      <img class="slide-img" src="images/Innovation.png" alt="NutriWell Innovation" />
+    </div>
+    <div class="slide slide-2">
+      <img class="slide-img" src="images/Quality.png" alt="NutriWell Health" />
+    </div>
+    <div class="slide slide-3">
+      <img class="slide-img" src="images/Wellness.png" alt="NutriWell Journey" />
+    </div>
+    <div class="slider-dots">
+      <div class="dot active" onclick="goSlide(0)"></div>
+      <div class="dot" onclick="goSlide(1)"></div>
+      <div class="dot" onclick="goSlide(2)"></div>
+    </div>
+    <div class="slider-arrow slider-prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></div>
+    <div class="slider-arrow slider-next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></div>
+  </div>
+
+  <!-- Innovation Section -->
+  <section class="innovation-sec">
+    <div class="container">
+      <div class="innov-card">
+        <div class="innov-text fade-up">
+          <h2>Innovation at the Heart of Healthcare</h2>
+          <p>At NutriWell, we combine cutting-edge pharmaceutical science with the power of nutraceuticals. Our research-driven approach ensures every product delivers real results — from immunity boosters to gastro care solutions.</p>
+          <a href="#" class="btn btn-gold" onclick="showPage('purpose',null)">Know More</a>
+        </div>
+        <div class="innov-img">
+          <img src="images/Innovation.png" alt="NutriWell"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Carousel -->
+  <section class="products-carousel-sec">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Our Products</h2>
+        <div class="line"></div>
+        <p>A trusted portfolio of pharma & nutraceutical solutions — quality assured, affordably priced.</p>
+      </div>
+      <div class="carousel-wrap" style="padding:0 20px">
+        <button class="car-btn car-prev" onclick="carPrev()"><i class="fas fa-chevron-left"></i></button>
+        <div style="overflow:hidden">
+          <div class="carousel-track" id="carTrack">
+            <div class="prod-card"><img class="p-img" src="images/IMG_2581.png" alt="ONECORE SYRUP"/><h4>ONECORE SYRUP</h4><p>Multivitamins, Multiminerals & Antioxidants Syrup</p></div>
+            <div class="prod-card"><img class="p-img" src="images/NUTRIPRAZ-P DSR.png" alt="NUTRIPRAZ-P DSR"/><h4>NUTRIPRAZ-P DSR</h4><p>Pantoprazole 40mg + Domperidone 30mg SR</p></div>
+            <div class="prod-card"><img class="p-img" src="images/NUTRIPRAZ-P DSR (1).png" alt="NUTRIPRAZ-E DSR"/><h4>NUTRIPRAZ-E DSR</h4><p>Esomeprazole 40mg + Domperidone 30mg SR</p></div>
+            <div class="prod-card"><div class="p-icon"><i class="fas fa-capsules"></i></div><h4>NUTRIPRAZ-R DSR</h4><p>Rabeprazole 20mg + Domperidone 30mg SR</p></div>
+            <div class="prod-card"><div class="p-icon"><i class="fas fa-pills"></i></div><h4>NUTRIPRAZ-PD</h4><p>Pantoprazole 20mg + Domperidone 10mg</p></div>
+            <div class="prod-card"><div class="p-icon"><i class="fas fa-capsules"></i></div><h4>NUTRIPRAZ-DX 30</h4><p>Dexlansoprazole 30mg Modified Release</p></div>
+            <div class="prod-card"><div class="p-icon"><i class="fas fa-tablets"></i></div><h4>NUTRIPRAZ-R 40</h4><p>Rabeprazole 40mg</p></div>
+            <div class="prod-card"><div class="p-icon"><i class="fas fa-prescription-bottle"></i></div><h4>ENZOGOLD</h4><p>Diastase 50mg + Pepsin 10mg</p></div>
+          </div>
+        </div>
+        <button class="car-btn car-next" onclick="carNext()"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Values -->
+  <section class="mission-home">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Our Mission and Values</h2>
+        <div class="line"></div>
+      </div>
+      <div class="mv-cards">
+        <div class="mv-card fade-up delay-1">
+          <div class="mv-icon">💰</div>
+          <h3>Affordability</h3>
+          <p>Quality healthcare shouldn't break the bank. We deliver cost-effective pharma solutions without compromising on quality.</p>
+        </div>
+        <div class="mv-card fade-up delay-2">
+          <div class="mv-icon">✅</div>
+          <h3>Quality</h3>
+          <p>Every NutriWell product undergoes rigorous quality assurance — guaranteeing safety, purity, and efficacy in every dose.</p>
+        </div>
+        <div class="mv-card fade-up delay-3">
+          <div class="mv-icon">📋</div>
+          <h3>Range</h3>
+          <p>From nutraceuticals to prescription medicines — our diverse portfolio covers all healthcare needs under one trusted brand.</p>
+        </div>
+        <div class="mv-card fade-up delay-4">
+          <div class="mv-icon">🚚</div>
+          <h3>Supply Chain</h3>
+          <p>Reliable sourcing and efficient distribution ensure NutriWell products reach clinics and pharmacies on time, every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey -->
+  <section class="journey-sec">
+    <div class="container">
+      <div class="journey-inner">
+        <div class="journey-text fade-up">
+          <h2>OUR<br/>JOURNEY</h2>
+          <p>NutriWell Pharmaceuticals has been dedicated to improving health outcomes through innovative pharmaceutical and nutraceutical solutions. From breakthrough formulations to a commitment to accessibility — our journey is just beginning.</p>
+          <a href="#" class="btn btn-primary" onclick="showPage('purpose',null)">Learn More</a>
+        </div>
+        <div class="journey-img"><img class="journey-img" src="images/Journey.png" alt="NutriWell"/></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===================== PRODUCTS PAGE ===================== -->
+<div id="page-products" class="page">
+
+  <div class="prod-hero">
+    <div class="container">
+      <div class="prod-hero-inner">
+        <div class="prod-hero-text fade-up">
+          <h1>Reliable Medicines for Every Need</h1>
+          <p>Explore our diverse portfolio of high-quality pharmaceuticals and nutraceuticals — from everyday essentials to advanced treatments.</p>
+          <a href="#" class="btn btn-gold">Connect Now</a>
+        </div>
+        <div class="prod-hero-img">
+          <img src="images/IMG_2581.png" alt="NutriWell ONECORE Syrup" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Showcase with Images -->
+  <section class="prod-showcase">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Featured Products</h2>
+        <div class="line"></div>
+        <p>Premium formulations backed by science, trusted by healthcare professionals.</p>
+      </div>
+      <div class="prod-showcase-grid">
+        <div class="prod-showcase-card fade-up delay-1">
+          <div class="ps-img"><img src="images/IMG_2581.png" alt="ONECORE SYRUP" /></div>
+          <div class="ps-info">
+            <p class="ps-type">Nutraceutical</p>
+            <h3>ONECORE SYRUP</h3>
+            <p>Multivitamins, Multiminerals and Antioxidants Syrup. Supports immune health, daily vitality, and nutritional balance.</p>
+          </div>
+        </div>
+        <div class="prod-showcase-card fade-up delay-2">
+          <div class="ps-img"><img src="images/NUTRIPRAZ-P DSR.png" alt="NUTRIPRAZ-P DSR" /></div>
+          <div class="ps-info">
+            <p class="ps-type">Gastro Care</p>
+            <h3>NUTRIPRAZ-P DSR</h3>
+            <p>Pantoprazole 40mg + Domperidone 30mg SR Capsules. Premium sustained-release gastro resistant formulation.</p>
+          </div>
+        </div>
+        <div class="prod-showcase-card fade-up delay-3">
+          <div class="ps-img"><img src="images/NUTRIPRAZ-P DSR (1).png" alt="NUTRIPRAZ-E DSR" /></div>
+          <div class="ps-info">
+            <p class="ps-type">Gastro Care</p>
+            <h3>NUTRIPRAZ-E DSR</h3>
+            <p>Esomeprazole 40mg + Domperidone 30mg SR Capsules. Advanced proton pump inhibitor with prokinetic action.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prod-list-sec">
+    <div class="container">
+      <div class="sec-head">
+        <h2>COMPLETE PRODUCT LIST</h2>
+        <div class="line"></div>
+      </div>
+      <table class="prod-table">
+        <tr><td><span class="p-name prod-badge">NUTRIPRAZ-P DSR</span></td><td class="p-comp">Pantoprazole 40mg + Domperidone 30mg SR</td></tr>
+        <tr><td><span class="p-name prod-badge">NUTRIPRAZ-E DSR</span></td><td class="p-comp">Esomeprazole 40mg + Domperidone 30mg SR</td></tr>
+        <tr><td><span class="p-name prod-badge">NUTRIPRAZ-R DSR</span></td><td class="p-comp">Rabeprazole 20mg + Domperidone 30mg SR</td></tr>
+        <tr><td><span class="p-name prod-badge">NUTRIPRAZ-PD</span></td><td class="p-comp">Pantoprazole 20mg + Domperidone 10mg</td></tr>
+        <tr><td><span class="p-name prod-badge">NUTRIPRAZ-DX 30</span></td><td class="p-comp">Dexlansoprazole 30mg Modified Release</td></tr>
+        <tr><td><span class="p-name prod-badge">NUTRIPRAZ-R 40</span></td><td class="p-comp">Rabeprazole 40mg</td></tr>
+        <tr><td><span class="p-name prod-badge">ONECORE SYRUP</span></td><td class="p-comp">Multivitamins, Multiminerals and Antioxidants Syrup</td></tr>
+        <tr><td><span class="p-name prod-badge">ENZOGOLD</span></td><td class="p-comp">Diastase 50mg + Pepsin 10mg</td></tr>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===================== ABOUT US PAGE ===================== -->
+<div id="page-team" class="page">
+
+  <!-- Page Hero -->
+  <div class="about-hero">
+    <div class="about-hero-shapes">
+      <div class="ah-shape ah-shape-1"></div>
+      <div class="ah-shape ah-shape-2"></div>
+    </div>
+    <div class="container">
+      <div class="about-breadcrumb fade-up">
+        <span onclick="showPage('home',null)" style="cursor:pointer;opacity:0.7">Home</span>
+        <i class="fas fa-chevron-right" style="font-size:0.7rem;margin:0 8px;opacity:0.5"></i>
+        <span>About Us</span>
+      </div>
+      <h1 class="about-hero-title fade-up">About NutriWell Pharma</h1>
+      <p class="about-hero-sub fade-up delay-1">A passionate team of healthcare professionals committed to transforming pharmaceutical marketing in India</p>
+    </div>
+  </div>
+
+  <!-- Our Story -->
+  <section class="about-story-sec">
+    <div class="container">
+      <div class="about-story-grid">
+        <div class="about-story-visual fade-up">
+          <div class="asv-main">
+            <div class="asv-icon"><i class="fas fa-heartbeat"></i></div>
+            <h3>NutriWell Pharma</h3>
+            <p>Nurturing Health. Delivering Quality.</p>
+            <div class="asv-badge">PHARMA PRIVATE LIMITED</div>
+          </div>
+          <div class="asv-badges">
+            <div class="asv-badge-item"><i class="fas fa-globe"></i> WHO-GMP Certified</div>
+            <div class="asv-badge-item"><i class="fas fa-star"></i> Quality First</div>
+          </div>
+        </div>
+        <div class="about-story-content fade-up delay-2">
+          <div class="about-section-tag">Our Story</div>
+          <h2 class="about-section-title">Who We <span class="text-teal-highlight">Are</span></h2>
+          <p>NutriWell Pharma Private Limited is a Bangalore-based pharmaceutical marketing company committed to delivering high-quality healthcare solutions across India. With a strong focus on gastric care, digestive wellness, and nutritional supplementation, we work towards improving patient well-being through trusted and effective formulations.</p>
+          <br/>
+          <p>At NutriWell Pharma, quality remains at the core of everything we do. We collaborate exclusively with WHO-GMP certified manufacturing partners to ensure that every product meets stringent quality, safety, and efficacy standards. Our commitment is to make reliable healthcare products accessible to healthcare professionals and patients through ethical and responsible marketing practices.</p>
+          <br/>
+          <p>Driven by integrity, innovation, and customer trust, NutriWell Pharma continues to expand its presence across multiple states with a dedicated professional network. We strive to build long-term relationships with healthcare practitioners by providing dependable products backed by quality assurance and consistent service.</p>
+          <br/>
+          <p>With a vision to become a trusted name in digestive and wellness healthcare, we remain committed to nurturing health and delivering quality in every step we take.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Vision Values -->
+  <section class="about-mvv-sec">
+    <div class="container">
+      <div class="sec-head fade-up">
+        <div class="about-section-tag" style="display:inline-block;margin-bottom:8px">Our Foundation</div>
+        <h2>Mission, Vision &amp; <span class="text-teal-highlight">Values</span></h2>
+        <div class="line"></div>
+      </div>
+      <div class="about-mvv-grid">
+        <div class="about-mvv-card mvv-mission fade-up delay-1">
+          <div class="about-mvv-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>Our Mission</h3>
+          <p>To enhance healthcare outcomes by delivering innovative, quality pharmaceutical solutions that make a meaningful difference in the lives of patients and healthcare providers across India.</p>
+        </div>
+        <div class="about-mvv-card mvv-vision fade-up delay-2">
+          <div class="about-mvv-icon"><i class="fas fa-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>To be the most trusted pharmaceutical marketing company in India, known for our uncompromising commitment to quality, innovation, and patient welfare.</p>
+        </div>
+        <div class="about-mvv-card mvv-values fade-up delay-3">
+          <div class="about-mvv-icon"><i class="fas fa-heart"></i></div>
+          <h3>Our Values</h3>
+          <ul class="about-values-list">
+            <li><i class="fas fa-check-circle"></i> Integrity in everything we do</li>
+            <li><i class="fas fa-check-circle"></i> Patient health above all</li>
+            <li><i class="fas fa-check-circle"></i> Scientific excellence</li>
+            <li><i class="fas fa-check-circle"></i> Continuous innovation</li>
+            <li><i class="fas fa-check-circle"></i> Nationwide accessibility</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="about-stats-sec">
+    <div class="container">
+      <div class="about-stats-grid">
+        <div class="about-stat-card fade-up delay-1">
+          <div class="about-stat-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div class="about-stat-num" data-target="3" data-suffix="+">0+</div>
+          <div class="about-stat-label">States Covered</div>
+        </div>
+        <div class="about-stat-card fade-up delay-2">
+          <div class="about-stat-icon"><i class="fas fa-pills"></i></div>
+          <div class="about-stat-num" data-target="8" data-suffix="+">0+</div>
+          <div class="about-stat-label">Premium Products</div>
+        </div>
+        <div class="about-stat-card fade-up delay-3">
+          <div class="about-stat-icon"><i class="fas fa-user-md"></i></div>
+          <div class="about-stat-num" data-target="2500" data-suffix="+">0+</div>
+          <div class="about-stat-label">Trusted Doctors</div>
+        </div>
+        <div class="about-stat-card fade-up delay-4">
+          <div class="about-stat-icon"><i class="fas fa-users"></i></div>
+          <div class="about-stat-num" data-target="100" data-suffix="+">0+</div>
+          <div class="about-stat-label">Talented Professionals</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentiators -->
+  <section class="about-diff-sec">
+    <div class="container">
+      <div class="sec-head fade-up">
+        <div class="about-section-tag" style="display:inline-block;margin-bottom:8px">What Makes Us Different</div>
+        <h2>Our <span class="text-teal-highlight">Differentiators</span></h2>
+        <div class="line"></div>
+      </div>
+      <div class="about-diff-timeline">
+        <div class="adt-item fade-up delay-1">
+          <div class="adt-icon"><i class="fas fa-microscope"></i></div>
+          <div class="adt-content">
+            <h3>Science-First Approach</h3>
+            <p>Every product in our portfolio is backed by extensive scientific research, clinical data, and regulatory compliance to ensure maximum efficacy and safety.</p>
+          </div>
+        </div>
+        <div class="adt-item fade-up delay-2">
+          <div class="adt-icon"><i class="fas fa-handshake"></i></div>
+          <div class="adt-content">
+            <h3>Doctor-Centric Model</h3>
+            <p>We build lasting relationships with healthcare professionals through continuous medical education, prompt service, and transparent communication.</p>
+          </div>
+        </div>
+        <div class="adt-item fade-up delay-3">
+          <div class="adt-icon"><i class="fas fa-award"></i></div>
+          <div class="adt-content">
+            <h3>Quality Uncompromised</h3>
+            <p>Our products are manufactured in WHO-GMP certified facilities with multiple quality checkpoints ensuring every batch meets the highest international standards.</p>
+          </div>
+        </div>
+        <div class="adt-item fade-up delay-4">
+          <div class="adt-icon"><i class="fas fa-rocket"></i></div>
+          <div class="adt-content">
+            <h3>Rapid Growth Strategy</h3>
+            <p>Strategic expansion with a clear roadmap to serve more states and healthcare professionals, making quality pharmaceutical solutions accessible nationwide.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder & Advisory Team -->
+  <!-- <section class="founder-sec">
+    <div class="container">
+      <h2>MEET OUR TEAM</h2>
+      <p class="sub">Our Founder</p>
+      <div class="founder-card">
+        <div class="founder-photo">
+          <i class="fas fa-user-tie"></i>
+          <div class="founder-label">Mr. Kempraju K</div>
+        </div>
+        <div class="founder-bio fade-up">
+          <p>Kempraju K was born into a farming family. He completed his education at a government school and developed a long-term vision to contribute to society through a multidisciplinary approach. He began his career as a small entrepreneur across various fields, achieving success through his dedication, discipline, and devotion.</p>
+          <p>His commitment to social service led him to recognize the community's need for accessible and affordable healthcare. This vision led to the creation of NutriWell Pharmaceuticals — built on the principles of Nurturing wellness, Ultimate quality, Trusted remedies, Reliable supply, Innovative formulations, Wellness for all, Excellence in care, and Life-enriching solutions.</p>
+          <span class="role-badge">Chief Executive Officer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="advisory-sec">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Advisory Team</h2>
+        <div class="line"></div>
+      </div>
+      <div class="adv-grid">
+        <div class="adv-card fade-up delay-1">
+          <div class="adv-photo"><i class="fas fa-user-md"></i></div>
+          <div class="adv-info">
+            <h4>DR. Narasimpa GM</h4>
+            <p class="adv-spec">Pediatrician</p>
+            <p>Dr. Narasimpa advises NutriWell to ensure its medicines meet the critical needs of pediatric care, focusing on effective, safe, and accessible solutions for children.</p>
+          </div>
+        </div>
+        <div class="adv-card fade-up delay-2">
+          <div class="adv-photo"><i class="fas fa-stethoscope"></i></div>
+          <div class="adv-info">
+            <h4>Dr. Ambrish C</h4>
+            <p class="adv-spec">Diabetes Care Specialist</p>
+            <p>Dr. Ambrish C believes NutriWell's mission aligns with today's urgent need for affordable diabetes care, making quality treatment accessible to all patients.</p>
+          </div>
+        </div>
+        <div class="adv-card fade-up delay-3">
+          <div class="adv-photo"><i class="fas fa-procedures"></i></div>
+          <div class="adv-info">
+            <h4>DR. Girish G</h4>
+            <p class="adv-spec">Surgical Oncologist</p>
+            <p>Dr. Girish, MBBS, MS, MCh, is an experienced surgical oncologist specializing in laparoscopic and robotic surgeries, offering over 14 years of expert care.</p>
+          </div>
+        </div>
+        <div class="adv-card fade-up delay-4">
+          <div class="adv-photo"><i class="fas fa-heartbeat"></i></div>
+          <div class="adv-info">
+            <h4>DR. Arun Nayak</h4>
+            <p class="adv-spec">General Surgeon</p>
+            <p>Dr. Arun Nayak joined the advisory board to guide NutriWell in delivering surgical-grade medicines, driven by his passion for accessible high-quality healthcare.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+</div>
+
+<!-- ===================== PURPOSE PAGE ===================== -->
+<div id="page-purpose" class="page">
+
+  <div class="purpose-hero">
+    <div class="container">
+      <div class="purpose-hero-inner">
+        <div class="purpose-hero-text fade-up">
+          <h1>Health for All, Hope for the Future</h1>
+          <p>Our mission: affordable, high-quality pharmaceutical and nutraceutical solutions for clinics, hospitals, and communities across India.</p>
+          <a href="#" class="btn btn-gold">Get In Touch</a>
+        </div>
+        <div style="height:260px;background:rgba(255,255,255,0.08);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:80px;"><img src="images/Health.png" alt="NutriWell"/></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="purpose-quote-sec">
+    <div class="container">
+      <div class="pq-inner">
+        <div class="pq-text">
+          Recognizing the community's need for accessible healthcare, the NutriWell team — driven by a shared vision of wellness for all — established a framework of Nurturing, Ultimate quality, Trusted care, Reliable delivery, Innovative solutions, Wellness focus, Excellence in standards, Life-enriching impact, and Lasting wellbeing. This initiative ensures communities have access to a wide range of affordable medicines and nutraceuticals.
+        </div>
+        <div class="pq-imgs">
+          <div class="pq-img" style="display:flex;align-items:center;justify-content:center;font-size:32px;color:rgba(255,255,255,0.5)">👥</div>
+          <div class="pq-img" style="display:flex;align-items:center;justify-content:center;font-size:32px;color:rgba(255,255,255,0.5)">🌿</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="acronym-sec">
+    <div class="container">
+      <div class="acronym-inner">
+        <div class="acronym-text fade-up">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+            <img src="images/NutriWell.svg" alt="NutriWell" style="height:48px;width:auto" />
+          </div>
+          <p>NutriWell Pharmaceuticals is dedicated to transforming healthcare through innovative research and reliable distribution of affordable pharma & nutraceutical products — from everyday essentials to advanced treatments, ensuring the highest standards of quality, safety & efficacy.</p>
+        </div>
+        <div class="acronym-bars fade-up delay-2">
+          <div class="a-bar"><div class="a-letter">N</div><div class="a-word">NURTURING</div></div>
+          <div class="a-bar"><div class="a-letter">U</div><div class="a-word">ULTIMATE</div></div>
+          <div class="a-bar"><div class="a-letter">T</div><div class="a-word">TRUSTED</div></div>
+          <div class="a-bar"><div class="a-letter">R</div><div class="a-word">RELIABLE</div></div>
+          <div class="a-bar"><div class="a-letter">I</div><div class="a-word">INNOVATIVE</div></div>
+          <div class="a-bar"><div class="a-letter">W</div><div class="a-word">WELLNESS</div></div>
+          <div class="a-bar"><div class="a-letter">E</div><div class="a-word">EXCELLENCE</div></div>
+          <div class="a-bar"><div class="a-letter">L</div><div class="a-word">LIFE</div></div>
+          <div class="a-bar"><div class="a-letter">L</div><div class="a-word">LONGEVITY</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mv-full-sec">
+    <div class="container">
+      <div class="sec-head">
+        <h2>🌿 MISSION & VALUES 🌿</h2>
+        <div class="line"></div>
+      </div>
+      <p class="mv-full-text">NutriWell Pharmaceuticals is dedicated to transforming healthcare through innovative research and reliable distribution of affordable medications and nutraceuticals. Our experienced team enables us to deliver a wide range of products — from everyday essentials to advanced treatments — all designed to meet the highest standards of quality.</p>
+      <div class="vision-commitment">
+        <div class="vc-card fade-up delay-1">
+          <h3>Our Vision</h3>
+          <p>To be India's most trusted provider of innovative, high-quality, and affordable healthcare solutions — empowering hospitals, clinics, and communities to enhance patient outcomes nationwide.</p>
+        </div>
+        <div class="vc-card fade-up delay-2">
+          <h3>Our Commitment</h3>
+          <p>We are committed to providing affordable healthcare solutions that empower providers and improve lives. Every NutriWell product undergoes rigorous quality assurance, guaranteeing safety and efficacy while remaining cost-effective.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===================== EVENTS PAGE ===================== -->
+<div id="page-events" class="page">
+
+  <div class="events-hero">
+    <div class="container">
+      <h1 class="fade-up">Bringing Our Mission to Life</h1>
+      <p class="fade-up delay-1">Moments from our events, conferences, product launches, and celebrations across India.</p>
+    </div>
+  </div>
+
+  <section class="gallery-sec">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Photo Gallery</h2>
+        <div class="line"></div>
+      </div>
+      <div class="gallery-grid">
+        <div class="g-item"><i class="fas fa-award"></i></div>
+        <div class="g-item"><i class="fas fa-handshake"></i></div>
+        <div class="g-item"><i class="fas fa-car"></i></div>
+        <div class="g-item"><i class="fas fa-birthday-cake"></i></div>
+        <div class="g-item"><i class="fas fa-desktop"></i></div>
+        <div class="g-item"><i class="fas fa-users"></i></div>
+        <div class="g-item"><i class="fas fa-microphone"></i></div>
+        <div class="g-item"><i class="fas fa-tree"></i></div>
+        <div class="g-item"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="g-item"><i class="fas fa-book-open"></i></div>
+        <div class="g-item"><i class="fas fa-pray"></i></div>
+        <div class="g-item"><i class="fas fa-trophy"></i></div>
+        <div class="g-item"><i class="fas fa-flag"></i></div>
+        <div class="g-item"><i class="fas fa-camera"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-sec">
+    <div class="container">
+      <div class="sec-head">
+        <h2 style="color:var(--gold)">Videos</h2>
+        <div class="line" style="background:var(--primary)"></div>
+      </div>
+      <div class="video-wrap">
+        <div class="video-placeholder" id="videoPlaceholder" onclick="playVideo()">
+          <div class="play-btn"><i class="fas fa-play"></i></div>
+          <p>Watch Our Company Story</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===================== HEALTH TIPS PAGE ===================== -->
+<div id="page-healthtips" class="page">
+
+  <div class="ht-hero">
+    <div class="container">
+      <div class="ht-hero-inner">
+        <div class="ht-hero-text fade-up">
+          <h1>Your Guide to Everyday Wellness</h1>
+          <p>Simple, actionable advice for better health and prevention. Live better, feel stronger every day with NutriWell.</p>
+          <a href="#" class="btn btn-gold">Know More</a>
+        </div>
+        <div class="ht-hero-icons">
+          <div class="ht-icon-box"><div class="ico">🧠</div><span>Mental Health</span></div>
+          <div class="ht-icon-box"><div class="ico">💊</div><span>Medicine</span></div>
+          <div class="ht-icon-box"><div class="ico">🍎</div><span>Nutrition</span></div>
+          <div class="ht-icon-box"><div class="ico">🏋️</div><span>Exercise</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="challenge-sec">
+    <div class="container">
+      <div class="sec-head">
+        <h2>30 Day Wellness Challenge</h2>
+        <div class="line"></div>
+      </div>
+      <div class="challenge-inner">
+        <div class="calendar-box">
+          <h3>30 Days Challenge</h3>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+        <div class="tip-card">
+          <div class="t-ico">🍎</div>
+          <h4>Nutrition</h4>
+          <p style="margin-top:8px;font-size:0.82rem;color:#556">Track your daily nutrition intake for 30 days and build lasting healthy habits.</p>
+        </div>
+        <div class="tip-card" style="background:#fff0e8">
+          <div class="t-ico">🧘</div>
+          <h4>Exercise</h4>
+          <p style="margin-top:8px;font-size:0.82rem;color:#556">Commit to daily movement — even 20 minutes makes a lasting difference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fruit-sec">
+    <div class="container">
+      <div class="fruit-inner">
+        <div class="fruit-text fade-up">
+          <h2>🍒 Fruit of the day: Cherries</h2>
+          <ul>
+            <li>Nutritional Values (1 cup, 138g):</li>
+            <li>Calories: <strong>87</strong></li>
+            <li>Vitamin C: <strong>16% DV</strong></li>
+            <li>Fiber: <strong>2.9g</strong></li>
+            <li>Antioxidants: <strong>High in melatonin</strong></li>
+            <li><span class="fb-label">Key Benefits:</span> Enhances sleep quality, Reduces inflammation, Supports heart health.</li>
+          </ul>
+        </div>
+        <div class="fruit-img">🍒</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tips-grid-sec">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Health Tips</h2>
+        <div class="line"></div>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-g-card fade-up delay-1">
+          <div class="tg-header">💧</div>
+          <div class="tg-body"><h4>Stay Hydrated</h4><p>Drink at least 8 glasses of water daily. Hydration supports digestion, skin health, and energy levels throughout the day.</p></div>
+        </div>
+        <div class="tip-g-card fade-up delay-2">
+          <div class="tg-header">🥗</div>
+          <div class="tg-body"><h4>Eat a Rainbow</h4><p>Include colorful fruits and vegetables in every meal. Different colors mean different nutrients your body needs.</p></div>
+        </div>
+        <div class="tip-g-card fade-up delay-3">
+          <div class="tg-header">😴</div>
+          <div class="tg-body"><h4>Sleep Well</h4><p>Aim for 7-9 hours of quality sleep. Good sleep boosts immunity, improves mood, and sharpens focus.</p></div>
+        </div>
+        <div class="tip-g-card fade-up delay-1">
+          <div class="tg-header">🚶</div>
+          <div class="tg-body"><h4>Walk Daily</h4><p>A 30-minute walk each day reduces risk of heart disease, improves mood, and strengthens bones and muscles.</p></div>
+        </div>
+        <div class="tip-g-card fade-up delay-2">
+          <div class="tg-header">🧘</div>
+          <div class="tg-body"><h4>Manage Stress</h4><p>Practice meditation, deep breathing, or yoga. Chronic stress weakens immunity and impacts overall health significantly.</p></div>
+        </div>
+        <div class="tip-g-card fade-up delay-3">
+          <div class="tg-header">☀️</div>
+          <div class="tg-body"><h4>Get Sunlight</h4><p>15-20 minutes of morning sunlight boosts vitamin D, improves mood, regulates sleep cycles and strengthens bones.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="f-logo">
+          <img src="images/NutriWell.svg" alt="NutriWell" />
+        </div>
+        <address>
+          NutriWell Pharmaceuticals Pvt. Ltd.<br/>
+          Bengaluru – 560 043, Karnataka
+        </address>
+        <div class="f-contacts">
+          Queries: <a href="mailto:info@nutriwell.com">info@nutriwell.com</a><br/>
+          WhatsApp: +91 7224004615
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('team',null)">About Us</a></li>
+          <!-- <li><a href="#" onclick="showPage('team',null)">Team</a></li> -->
+          <!-- <li><a href="#" onclick="showPage('purpose',null)">Journey</a></li> -->
+          <li><a href="#" onclick="showPage('purpose',null)">Purpose</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('products',null)">Products</a></li>
+          <!-- <li><a href="#" onclick="showPage('events',null)">Newsletter</a></li> -->
+          <li><a href="#" onclick="showPage('healthtips',null)">Health Tips</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <form class="footer-form" id="contactForm">
+          <input type="text" name="name" id="contactName" placeholder="Name" required />
+          <input type="email" name="email" id="contactEmail" placeholder="Email" required />
+          <input type="tel" name="phone" id="contactPhone" placeholder="Phone Number" required />
+          <textarea name="message" id="contactMessage" placeholder="What are you looking for" required></textarea>
+          <button type="submit" id="contactSubmitBtn">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 NutriWell Pharmaceuticals Pvt. Ltd. &nbsp;|&nbsp; Powered by Dev Creations and Solutions</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script src="script.js"></script>
+</body>
+</html>
