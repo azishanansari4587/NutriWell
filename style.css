@@ -104,13 +104,47 @@ section { padding: 80px 0; }
   padding: 0 24px; height: 76px;
 }
 .nav-logo {
-  display: flex; flex-direction: column; gap: 1px; text-decoration: none;
+  display: flex; align-items: center; text-decoration: none;
 }
-.logo-brand-row { display: flex; align-items: baseline; gap: 0; }
-.logo-nutri { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--primary-dark); letter-spacing: -0.5px; }
-.logo-well { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--sage-dark); letter-spacing: -0.5px; }
-.logo-sub { font-size: 0.58rem; font-weight: 700; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
-.logo-tagline-tiny { font-size: 0.5rem; color: var(--gray); letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.6; }
+.logo-img {
+  height: 58px; /* Increased size slightly for absolute readability and contrast */
+  width: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast; /* Optimizes downscaling interpolation in Chrome, Safari & Edge */
+  image-rendering: crisp-edges; /* Optimizes downscaling interpolation in Firefox */
+  filter: contrast(1.1) brightness(1.03) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05)); /* Sharpens contrast and makes colors look vibrant and not dull */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.logo-img:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: contrast(1.15) brightness(1.06) drop-shadow(0 6px 12px rgba(26, 92, 107, 0.12));
+}
+
+/* Footer Logo Container - Styled as a premium white card to keep original brand colors clear and readable */
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 22px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.footer-logo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.logo-footer {
+  height: 46px; /* Optimized height for the footer card */
+  width: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(1.1) brightness(1.03) !important; /* Enhance contrast on the footer white card */
+  opacity: 1;
+}
 
 .nav-toggle {
   display: none; flex-direction: column; gap: 5px;
@@ -651,11 +685,6 @@ body { padding-top: 76px; }
 .footer-wave svg { display: block; }
 .footer-content { padding: 60px 24px 0; max-width: 1200px; margin: 0 auto; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.4fr; gap: 40px; padding-bottom: 40px; }
-.footer-logo-brand { display: flex; align-items: baseline; }
-.footer-logo-brand .logo-nutri { font-size: 1.8rem; color: white; }
-.footer-logo-brand .logo-well { font-size: 1.8rem; color: var(--gold); }
-.footer-logo-sub { font-size: 0.6rem; letter-spacing: 2px; opacity: 0.7; margin-top: 2px; }
-.footer-logo-tagline { font-size: 0.52rem; letter-spacing: 1.5px; opacity: 0.5; margin-top: 2px; }
 .footer-desc { font-size: 0.85rem; opacity: 0.75; line-height: 1.8; margin: 16px 0; }
 .footer-social { display: flex; gap: 10px; }
 .footer-social a {
