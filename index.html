@@ -16,9 +16,7 @@
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
-    <a href="#" class="nav-logo" onclick="showPage('home', null)">
-      <img src="images/NutriWell.svg" alt="NutriWell Pharma Private Limited" class="logo-img" />
-    </a>
+    <img src="images/NutriWell.svg" alt="NutriWell Pharma Private Limited" class="logo-img nav-logo-img" />
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -55,7 +53,7 @@
 
     <!-- Hero Text -->
     <div class="hero-video-content">
-      <div class="hv-tag"><i class="fas fa-heartbeat"></i> NutriWell Pharma Private Limited</div>
+      <!-- <div class="hv-tag"><i class="fas fa-heartbeat"></i> NutriWell Pharma Private Limited</div> -->
       <h1 class="hv-title">
         <span class="hv-line-1">Nurturing Health</span>
         <span class="hv-line-2">Delivering Quality</span>
@@ -76,17 +74,17 @@
   <!-- Tagline Banner -->
   <section class="tagline-banner">
     <div class="tagline-content">
-      <i class="fas fa-heartbeat"></i>
+      <!-- <i class="fas fa-heartbeat"></i> -->
       <span>NURTURING HEALTH. DELIVERING QUALITY</span>
-      <i class="fas fa-heartbeat"></i>
+      <!-- <i class="fas fa-heartbeat"></i> -->
       <span>SCIENCE-DRIVEN INNOVATION</span>
-      <i class="fas fa-heartbeat"></i>
+      <!-- <i class="fas fa-heartbeat"></i> -->
       <span>TRUSTED BY 2500+ DOCTORS</span>
-      <i class="fas fa-heartbeat"></i>
+      <!-- <i class="fas fa-heartbeat"></i> -->
       <span>NURTURING HEALTH. DELIVERING QUALITY</span>
-      <i class="fas fa-heartbeat"></i>
+      <!-- <i class="fas fa-heartbeat"></i> -->
       <span>SCIENCE-DRIVEN INNOVATION</span>
-      <i class="fas fa-heartbeat"></i>
+      <!-- <i class="fas fa-heartbeat"></i> -->
       <span>TRUSTED BY 2500+ DOCTORS</span>
     </div>
   </section>
@@ -126,9 +124,7 @@
         <div class="mission-visual animate-on-scroll">
           <div class="mission-img-wrap">
             <div class="mission-img-main">
-              <div class="mission-icon-large"><i class="fas fa-flask"></i></div>
-              <h3>Science-Driven Solutions</h3>
-              <p>Every product backed by research and clinical excellence</p>
+              <img src="images/Science.png" alt="Science-Driven Solutions" />
             </div>
             <div class="mission-img-float">
               <div class="mif-item">
@@ -186,8 +182,8 @@
       <div class="products-grid">
         <div class="product-card animate-on-scroll">
           <div class="pc-header" style="background: linear-gradient(135deg, #0d4f5e, #1a7a8a)">
-            <div class="pc-icon"><i class="fas fa-capsules"></i></div>
-            <div class="pc-badge">Gastro</div>
+            <!-- <div class="pc-icon"><i class="fas fa-capsules"></i></div>
+            <div class="pc-badge">Gastro</div> -->
           </div>
           <div class="pc-body">
             <h3>NUTRIPRAZ-P DSR</h3>
@@ -199,8 +195,8 @@
         </div>
         <div class="product-card animate-on-scroll">
           <div class="pc-header" style="background: linear-gradient(135deg, #1a6b7a, #2a9aaa)">
-            <div class="pc-icon"><i class="fas fa-tablets"></i></div>
-            <div class="pc-badge">Gastro</div>
+            <!-- <div class="pc-icon"><i class="fas fa-tablets"></i></div>
+            <div class="pc-badge">Gastro</div> -->
           </div>
           <div class="pc-body">
             <h3>NUTRIPRAZ-E DSR</h3>
@@ -212,8 +208,8 @@
         </div>
         <div class="product-card animate-on-scroll">
           <div class="pc-header" style="background: linear-gradient(135deg, #0a3d4a, #0d5f70)">
-            <div class="pc-icon"><i class="fas fa-prescription-bottle-alt"></i></div>
-            <div class="pc-badge">Gastro</div>
+            <!-- <div class="pc-icon"><i class="fas fa-prescription-bottle-alt"></i></div>
+            <div class="pc-badge">Gastro</div> -->
           </div>
           <div class="pc-body">
             <h3>NUTRIPRAZ-R DSR</h3>
@@ -225,8 +221,8 @@
         </div>
         <div class="product-card animate-on-scroll">
           <div class="pc-header" style="background: linear-gradient(135deg, #1e7e5a, #27a874)">
-            <div class="pc-icon"><i class="fas fa-tint"></i></div>
-            <div class="pc-badge">Nutraceutical</div>
+            <!-- <div class="pc-icon"><i class="fas fa-tint"></i></div>
+            <div class="pc-badge">Nutraceutical</div> -->
           </div>
           <div class="pc-body">
             <h3>ONECORE SYRUP</h3>
@@ -372,22 +368,70 @@
 <div id="page-products" class="page">
 
   <div class="prod-hero">
-    <div class="container">
-      <div class="prod-hero-inner">
-        <div class="prod-hero-text fade-up">
-          <h1>Reliable Medicines for Every Need</h1>
-          <p>Explore our diverse portfolio of high-quality pharmaceuticals and nutraceuticals — from everyday essentials to advanced treatments.</p>
-          <a href="#" class="btn btn-gold" onclick="showPage('team',null)">Connect Now</a>
+    <div class="prod-carousel-container">
+      <div class="prod-carousel-track">
+        
+        <!-- Slide 1: ONECORE SYRUP -->
+        <div class="prod-carousel-slide active" data-index="0">
+          <div class="prod-hero-container">
+            <div class="prod-hero-inner">
+              <div class="prod-hero-text">
+                <h1>ONECORE SYRUP</h1>
+                <p>Comprehensive Multivitamins, Multiminerals and Antioxidants Syrup. Supports daily vitality, immunity, and overall metabolic balance.</p>
+                <a href="#" class="btn btn-gold" onclick="showPage('team',null)">Connect Now</a>
+              </div>
+              <div class="prod-hero-img">
+                <img src="images/Syrup.svg" alt="NutriWell ONECORE Syrup" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="prod-hero-img">
-          <img src="images/IMG_2581.png" alt="NutriWell ONECORE Syrup" />
+
+        <!-- Slide 2: NUTRIPRAZ-P DSR -->
+        <div class="prod-carousel-slide" data-index="1">
+          <div class="prod-hero-container">
+            <div class="prod-hero-inner">
+              <div class="prod-hero-text">
+                <h1>Gastric Care</h1>
+                <p>Complete Range in Gastric Care trusted solutions for better digestive health.</p>
+                <a href="#" class="btn btn-gold" onclick="showPage('team',null)">Connect Now</a>
+              </div>
+              <div class="prod-hero-img">
+                <img src="images/Gas.svg" alt="NUTRIPRAZ-P DSR" />
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Slide 3: NUTRIPRAZ-E DSR -->
+        <!-- <div class="prod-carousel-slide" data-index="2">
+          <div class="prod-hero-container">
+            <div class="prod-hero-inner">
+              <div class="prod-hero-text">
+                <h1>NUTRIPRAZ-E DSR</h1>
+                <p>Esomeprazole 40mg + Domperidone 30mg SR Capsules. Advanced proton pump inhibitor with prokinetic action for fast & long-lasting relief.</p>
+                <a href="#" class="btn btn-gold" onclick="showPage('team',null)">Connect Now</a>
+              </div>
+              <div class="prod-hero-img">
+                <img src="images/NUTRIPRAZ-P DSR (1).png" alt="NUTRIPRAZ-E DSR" />
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+
+      <!-- Carousel Dots -->
+      <div class="prod-carousel-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <!-- <span class="dot" data-slide="2"></span> -->
       </div>
     </div>
   </div>
 
   <!-- Product Showcase with Images -->
-  <section class="prod-showcase">
+  <!-- <section class="prod-showcase">
     <div class="container">
       <div class="sec-head">
         <h2>Featured Products</h2>
@@ -421,9 +465,9 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <section class="prod-list-sec">
+  <section class="prod-list-sec" id="prod-list-sec">
     <div class="container">
       <div class="sec-head">
         <h2>COMPLETE PRODUCT LIST</h2>
@@ -470,10 +514,7 @@
       <div class="about-story-grid">
         <div class="about-story-visual fade-up">
           <div class="asv-main">
-            <div class="asv-icon"><i class="fas fa-heartbeat"></i></div>
-            <h3>NutriWell Pharma</h3>
-            <p>Nurturing Health. Delivering Quality.</p>
-            <div class="asv-badge">PHARMA PRIVATE LIMITED</div>
+            <img src="images/NutriWell.svg" alt="NutriWell Pharma" class="about-main-logo" />
           </div>
           <div class="asv-badges">
             <div class="asv-badge-item"><i class="fas fa-globe"></i> WHO-GMP Certified</div>
@@ -611,7 +652,9 @@
           <p>Our mission: affordable, high-quality pharmaceutical and nutraceutical solutions for clinics, hospitals, and communities across India.</p>
           <a href="#" class="btn btn-gold" onclick="showPage('team',null)">Get In Touch</a>
         </div>
-        <div style="height:260px;background:rgba(255,255,255,0.08);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:80px;"><img src="images/Health.png" alt="NutriWell"/></div>
+        <div style="height:260px;background:rgba(255,255,255,0.08);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:80px;">
+          <!-- <img src="images/Health.png" alt="NutriWell"/> -->
+        </div>
       </div>
     </div>
   </div>
@@ -635,7 +678,7 @@
       <div class="acronym-inner">
         <div class="acronym-text fade-up">
           <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
-            <img src="images/Max_a_GIVE_ME_IN_HIGH_RSOL logo.png" alt="NutriWell Pharma Private Limited" class="logo-img" style="height:56px;" />
+            <img src="images/NutriWell.svg" alt="NutriWell Pharma Private Limited" class="logo-img" style="height:56px;" />
           </div>
           <p>NutriWell Pharmaceuticals is dedicated to transforming healthcare through innovative research and reliable distribution of affordable pharma &amp; nutraceutical products — from everyday essentials to advanced treatments, ensuring the highest standards of quality, safety &amp; efficacy.</p>
         </div>
@@ -985,7 +1028,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="images/Max_a_GIVE_ME_IN_HIGH_RSOL logo.png" alt="NutriWell Pharma Private Limited" class="logo-img logo-footer" />
+          <img src="images/NutriWell.svg" alt="NutriWell Pharma Private Limited" class="logo-img logo-footer" />
         </div>
         <p class="footer-desc">A trusted pharmaceutical marketing company dedicated to making quality healthcare accessible across India.</p>
         <div class="footer-social">
@@ -1021,7 +1064,7 @@
         <h4>Contact Us</h4>
         <p><i class="fas fa-envelope"></i> <a href="mailto:info@nutriwell.com">info@nutriwell.com</a></p>
         <p><i class="fas fa-phone"></i> +91 7224004615</p>
-        <p><i class="fas fa-map-marker-alt"></i> Bengaluru – 560 043, Karnataka</p>
+        <p><i class="fas fa-map-marker-alt"></i>No. 73, 20th main road, JC Nagar <br/> Bengaluru – 560086, Karnataka</p>
         <a href="#" class="footer-contact-btn" onclick="showPage('contact',null)">
           <i class="fas fa-paper-plane"></i> Send a Message
         </a>

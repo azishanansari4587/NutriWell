@@ -34,6 +34,12 @@ function showPage(pageId, linkEl) {
   if (pageId === 'home') {
     setTimeout(replayHeroAnim, 100);
   }
+  // Re-start or stop product carousel based on active page
+  if (pageId === 'products') {
+    if (typeof startProductCarousel === 'function') startProductCarousel();
+  } else {
+    if (typeof stopProductCarousel === 'function') stopProductCarousel();
+  }
 }
 
 // ---- CLOSE MOBILE MENU ----
@@ -274,3 +280,98 @@ function initFaqAccordion() {
   });
 }
 initFaqAccordion();
+
+// Globals for Carousel Control
+let startProductCarousel = null;
+let stopProductCarousel = null;
+
+// ---- PRODUCT HERO CAROUSEL ----
+function initProductCarousel() {
+  const slides = document.querySelectorAll('.prod-carousel-slide');
+  const dots = document.querySelectorAll('.prod-carousel-dots .dot');
+  
+  if (slides.length === 0) return;
+  
+  let currentIndex = 0;
+  let autoplayTimer = null;
+  
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    if (index >= slides.length) {
+      currentIndex = 0;
+    } else if (index < 0) {
+      currentIndex = slides.length - 1;
+    } else {
+      currentIndex = index;
+    }
+    
+    slides[currentIndex].classList.add('active');
+    if (dots[currentIndex]) {
+      dots[currentIndex].classList.add('active');
+    }
+  }
+  
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
+  
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+  }
+  
+  startProductCarousel = function() {
+    stopProductCarousel();
+    autoplayTimer = setInterval(nextSlide, 5000); // Transition slide every 5 seconds
+  };
+  
+  stopProductCarousel = function() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  };
+  
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const targetIndex = parseInt(dot.dataset.slide);
+      showSlide(targetIndex);
+      startProductCarousel(); // Reset autoplay timer
+    });
+  });
+
+  // Mobile Touch Swipe Support
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const swipeThreshold = 40; // minimum swipe distance in pixels
+  const trackEl = document.querySelector('.prod-carousel-track');
+  
+  if (trackEl) {
+    trackEl.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    
+    trackEl.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].clientX;
+      const swipeDistance = touchEndX - touchStartX;
+      
+      if (Math.abs(swipeDistance) > swipeThreshold) {
+        if (swipeDistance < 0) {
+          nextSlide(); // Swiped left -> Next Slide
+        } else {
+          prevSlide(); // Swiped right -> Previous Slide
+        }
+        startProductCarousel(); // Reset autoplay timer
+      }
+    }, { passive: true });
+  }
+
+  // Start initially if product page is active
+  const parentPage = document.getElementById('page-products');
+  if (parentPage && parentPage.classList.contains('active')) {
+    startProductCarousel();
+  }
+}
+
+initProductCarousel();

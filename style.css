@@ -107,7 +107,7 @@ section { padding: 80px 0; }
   display: flex; align-items: center; text-decoration: none;
 }
 .logo-img {
-  height: 58px; /* Increased size slightly for absolute readability and contrast */
+  height: 66px; /* Increased size to display the logo more clearly and prominently */
   width: auto;
   display: block;
   image-rendering: -webkit-optimize-contrast; /* Optimizes downscaling interpolation in Chrome, Safari & Edge */
@@ -115,9 +115,13 @@ section { padding: 80px 0; }
   filter: contrast(1.1) brightness(1.03) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05)); /* Sharpens contrast and makes colors look vibrant and not dull */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.logo-img:hover {
+.logo-img:not(.nav-logo-img):hover {
   transform: translateY(-2px) scale(1.02);
   filter: contrast(1.15) brightness(1.06) drop-shadow(0 6px 12px rgba(26, 92, 107, 0.12));
+}
+.nav-logo-img {
+  pointer-events: none; /* Disables all click, hover, and pointer events */
+  cursor: default; /* Ensures the mouse cursor remains default when hovering */
 }
 
 /* Footer Logo Container - Styled as a premium white card to keep original brand colors clear and readable */
@@ -557,16 +561,20 @@ body { padding-top: 76px; }
 .mission-img-wrap { position: relative; }
 .mission-img-main {
   background: linear-gradient(135deg, var(--primary), var(--sage-dark));
-  border-radius: var(--radius); padding: 48px 36px; color: white;
-  text-align: center; box-shadow: var(--shadow-lg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  height: 360px; /* Standardized height for perfect display of the cover image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.mission-icon-large {
-  width: 80px; height: 80px; background: rgba(255,255,255,0.15); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2rem; margin: 0 auto 20px;
+.mission-img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.mission-img-main h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
-.mission-img-main p { opacity: 0.85; font-size: 0.9rem; }
 .mission-img-float {
   display: flex; gap: 12px; margin-top: 16px;
 }
@@ -791,12 +799,149 @@ body { padding-top: 76px; }
 .footer-bottom p { font-size: 0.8rem; opacity: 0.5; }
 
 /* ===== PRODUCTS PAGE ===== */
-.prod-hero { background: linear-gradient(135deg, var(--primary-light) 0%, var(--sage-light) 100%); padding: 60px 0; }
-.prod-hero-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; }
-.prod-hero-text h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--primary); margin-bottom: 12px; }
-.prod-hero-text p { color: #556; line-height: 1.6; margin-bottom: 24px; }
-.prod-hero-img { height: 280px; display: flex; align-items: center; justify-content: center; }
-.prod-hero-img img { max-height: 260px; object-fit: contain; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.12)); }
+.prod-hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--sage-light) 100%);
+  padding: 80px 0 100px;
+  overflow: hidden;
+}
+.prod-carousel-container {
+  position: relative;
+  width: 100%;
+}
+.prod-carousel-track {
+  position: relative;
+  width: 100%;
+  display: grid;
+}
+.prod-carousel-slide {
+  grid-area: 1 / 1 / 2 / 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transform: translateY(15px);
+}
+.prod-carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.prod-hero-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 80px; /* Elegant padding on desktop sides */
+  margin: 0 auto;
+}
+.prod-hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 60px;
+}
+.prod-hero-text h1 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.prod-hero-text p {
+  color: #556;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.prod-hero-img {
+  height: 480px; /* Set taller area to display giant image clearly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.prod-hero-img img {
+  width: 100%;
+  height: auto;
+  max-height: 450px; /* Big and highly readable format */
+  object-fit: contain;
+  filter: drop-shadow(0 15px 35px rgba(26,92,107,0.15));
+  transition: transform 0.5s ease;
+}
+.prod-hero-img img:hover {
+  transform: scale(1.03);
+}
+
+/* Dots Indicators */
+.prod-carousel-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+.prod-carousel-dots .dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(26,92,107,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+/* Touch target expansion for mobile tapping comfort */
+.prod-carousel-dots .dot::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+}
+.prod-carousel-dots .dot.active {
+  width: 32px;
+  border-radius: 5px;
+  background: var(--primary);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 900px) {
+  .prod-hero {
+    padding: 60px 0 80px;
+  }
+  .prod-carousel-track {
+    min-height: 620px; /* Increased min-height to ensure elements don't get truncated */
+  }
+  .prod-hero-container {
+    padding: 0 20px;
+  }
+  .prod-hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 24px;
+  }
+  .prod-hero-text h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  .prod-hero-text p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .prod-hero-img {
+    height: 240px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .prod-hero-img img {
+    height: 220px; /* Fixed explicit height for mobile so SVGs don't collapse to 0 width */
+    width: auto;
+    max-width: 100%;
+  }
+}
 .prod-showcase { background: var(--white); padding: 80px 0; }
 .prod-showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
 .prod-showcase-card {
@@ -843,21 +988,21 @@ body { padding-top: 76px; }
 .about-story-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: center; }
 .about-story-visual { display: flex; flex-direction: column; gap: 20px; }
 .asv-main {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--sage-dark) 100%);
-  border-radius: var(--radius); padding: 40px 32px; text-align: center; color: white;
+  background: white;
+  border-radius: var(--radius);
+  padding: 48px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(26,92,107,0.06);
+  min-height: 220px;
 }
-.asv-icon {
-  width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 18px;
-  background: rgba(255,255,255,0.15);
-  display: flex; align-items: center; justify-content: center; font-size: 2rem;
-}
-.asv-main h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
-.asv-main p { opacity: 0.85; font-size: 0.9rem; margin-bottom: 16px; }
-.asv-badge {
-  display: inline-block; background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.35); padding: 6px 16px;
-  border-radius: var(--radius-pill); font-size: 0.72rem; letter-spacing: 1.2px; font-weight: 700;
+.about-main-logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 90px;
+  object-fit: contain;
 }
 .asv-badges { display: flex; gap: 12px; }
 .asv-badge-item {
