@@ -101,23 +101,20 @@ section { padding: 80px 0; }
 .nav-container {
   max-width: 1280px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px; height: 76px;
+  padding: 0 24px; height: 90px;
 }
 .nav-logo {
   display: flex; align-items: center; text-decoration: none;
 }
 .logo-img {
-  height: 66px; /* Increased size to display the logo more clearly and prominently */
+  height: 72px;
   width: auto;
   display: block;
-  image-rendering: -webkit-optimize-contrast; /* Optimizes downscaling interpolation in Chrome, Safari & Edge */
-  image-rendering: crisp-edges; /* Optimizes downscaling interpolation in Firefox */
-  filter: contrast(1.1) brightness(1.03) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05)); /* Sharpens contrast and makes colors look vibrant and not dull */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .logo-img:not(.nav-logo-img):hover {
   transform: translateY(-2px) scale(1.02);
-  filter: contrast(1.15) brightness(1.06) drop-shadow(0 6px 12px rgba(26, 92, 107, 0.12));
+  filter: drop-shadow(0 6px 12px rgba(26, 92, 107, 0.12));
 }
 .nav-logo-img {
   pointer-events: none; /* Disables all click, hover, and pointer events */
@@ -141,12 +138,9 @@ section { padding: 80px 0; }
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 .logo-footer {
-  height: 46px; /* Optimized height for the footer card */
+  height: 54px;
   width: auto;
   display: block;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  filter: contrast(1.1) brightness(1.03) !important; /* Enhance contrast on the footer white card */
   opacity: 1;
 }
 
@@ -181,7 +175,7 @@ section { padding: 80px 0; }
 @media (max-width: 900px) {
   .nav-toggle { display: flex; }
   .nav-menu {
-    display: none; position: absolute; top: 76px; left: 0; right: 0;
+    display: none; position: absolute; top: 90px; left: 0; right: 0;
     flex-direction: column; background: white;
     border-top: 1px solid var(--gray-light);
     padding: 16px 24px; gap: 4px;
@@ -196,7 +190,7 @@ section { padding: 80px 0; }
 /* ===== PAGE SECTIONS ===== */
 .page { display: none; }
 .page.active { display: block; }
-body { padding-top: 76px; }
+body { padding-top: 90px; }
 
 /* ===== CONTAINER ===== */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }

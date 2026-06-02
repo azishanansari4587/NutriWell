@@ -136,10 +136,53 @@ function replayHeroAnim() {
 function buildCalendar() {
   const grid = document.getElementById('calGrid');
   if (!grid) return;
-  for (let i = 1; i <= 31; i++) {
+  grid.innerHTML = '';
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth(); // 0-indexed
+  const today = now.getDate();
+
+  // Update the calendar heading with month and year
+  const calBox = grid.closest('.calendar-box');
+  if (calBox) {
+    const h3 = calBox.querySelector('h3');
+    if (h3) {
+      const monthNames = ['January','February','March','April','May','June',
+        'July','August','September','October','November','December'];
+      h3.textContent = monthNames[month] + ' ' + year;
+    }
+  }
+
+  // Add day-of-week headers
+  const dayHeaders = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  dayHeaders.forEach(d => {
+    const hdr = document.createElement('span');
+    hdr.textContent = d;
+    hdr.style.fontWeight = '700';
+    hdr.style.fontSize = '0.7rem';
+    hdr.style.color = '#1a5c6b';
+    hdr.style.cursor = 'default';
+    grid.appendChild(hdr);
+  });
+
+  // First day of the month (0=Sun, 1=Mon, ..., 6=Sat)
+  const firstDay = new Date(year, month, 1).getDay();
+  // Total days in the current month
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  // Add empty spacers for days before the 1st
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement('span');
+    empty.style.cursor = 'default';
+    grid.appendChild(empty);
+  }
+
+  // Add the actual days
+  for (let i = 1; i <= daysInMonth; i++) {
     const s = document.createElement('span');
     s.textContent = i;
-    if (i === new Date().getDate()) s.classList.add('today');
+    if (i === today) s.classList.add('today');
     grid.appendChild(s);
   }
 }
