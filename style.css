@@ -104,13 +104,13 @@ section { padding: 80px 0; }
   padding: 0 24px; height: 90px;
 }
 .nav-logo {
-  display: flex; align-items: center; text-decoration: none;
+  display: flex; align-items: left; text-decoration: none;
 }
 .logo-img {
-  height: 72px;
+  height: 80px;
   width: auto;
   display: block;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
 }
 .logo-img:not(.nav-logo-img):hover {
   transform: translateY(-2px) scale(1.02);
