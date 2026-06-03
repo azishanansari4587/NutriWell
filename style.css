@@ -117,6 +117,9 @@ section { padding: 80px 0; }
   filter: drop-shadow(0 6px 12px rgba(26, 92, 107, 0.12));
 }
 .nav-logo-img {
+  margin-top: 16px;
+  height: 180px;
+  width: auto;
   pointer-events: none; /* Disables all click, hover, and pointer events */
   cursor: default; /* Ensures the mouse cursor remains default when hovering */
 }
@@ -138,7 +141,7 @@ section { padding: 80px 0; }
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 .logo-footer {
-  height: 54px;
+  height: 80px;
   width: auto;
   display: block;
   opacity: 1;
