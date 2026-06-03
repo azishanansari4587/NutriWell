@@ -418,3 +418,107 @@ function initProductCarousel() {
 }
 
 initProductCarousel();
+
+// ---- DYNAMIC FRUIT OF THE DAY ----
+function displayFruitOfTheDay() {
+  const fruits = [
+    {
+      name: "Cherries",
+      emoji: "🍒",
+      serving: "Nutritional Values (1 cup, 138g):",
+      calories: "87",
+      vitaminC: "16% DV",
+      fiber: "2.9g",
+      antioxidants: "High in melatonin",
+      benefits: "Enhances sleep quality, Reduces inflammation, Supports heart health."
+    },
+    {
+      name: "Apples",
+      emoji: "🍎",
+      serving: "Nutritional Values (1 medium, 182g):",
+      calories: "95",
+      vitaminC: "14% DV",
+      fiber: "4.4g",
+      antioxidants: "High in quercetin",
+      benefits: "Supports gut health, Lowers cholesterol, Regulates blood sugar levels."
+    },
+    {
+      name: "Blueberries",
+      emoji: "🫐",
+      serving: "Nutritional Values (1 cup, 148g):",
+      calories: "84",
+      vitaminC: "24% DV",
+      fiber: "3.6g",
+      antioxidants: "Rich in anthocyanins",
+      benefits: "Boosts brain function, Lowers blood pressure, Promotes DNA repair."
+    },
+    {
+      name: "Oranges",
+      emoji: "🍊",
+      serving: "Nutritional Values (1 medium, 131g):",
+      calories: "62",
+      vitaminC: "116% DV",
+      fiber: "3.1g",
+      antioxidants: "High in hesperidin",
+      benefits: "Strengthens immune system, Enhances iron absorption, Promotes skin health."
+    },
+    {
+      name: "Bananas",
+      emoji: "🍌",
+      serving: "Nutritional Values (1 medium, 118g):",
+      calories: "105",
+      vitaminC: "17% DV",
+      fiber: "3.1g",
+      antioxidants: "Contains dopamine & catechins",
+      benefits: "Provides instant energy, Supports heart health, Aids digestion."
+    },
+    {
+      name: "Kiwi",
+      emoji: "🥝",
+      serving: "Nutritional Values (1 large, 91g):",
+      calories: "56",
+      vitaminC: "141% DV",
+      fiber: "2.7g",
+      antioxidants: "Rich in lutein",
+      benefits: "Improves digestive health, Promotes sound sleep, Supports respiratory function."
+    },
+    {
+      name: "Strawberries",
+      emoji: "🍓",
+      serving: "Nutritional Values (1 cup, 152g):",
+      calories: "49",
+      vitaminC: "149% DV",
+      fiber: "3.0g",
+      antioxidants: "High in ellagic acid",
+      benefits: "Improves insulin sensitivity, Enhances heart health, Protects skin from UV rays."
+    }
+  ];
+
+  // Choose a fruit based on day of the year (or date)
+  const now = new Date();
+  const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / (86400000));
+  const fruitIndex = dayOfYear % fruits.length;
+  const fruit = fruits[fruitIndex];
+
+  // Update DOM elements if they exist
+  const titleEl = document.getElementById('fruit-name-title');
+  const servingEl = document.getElementById('fruit-serving');
+  const caloriesEl = document.getElementById('fruit-calories');
+  const vitcEl = document.getElementById('fruit-vitaminc');
+  const fiberEl = document.getElementById('fruit-fiber');
+  const antiEl = document.getElementById('fruit-antioxidants');
+  const benefitsEl = document.getElementById('fruit-benefits');
+  const imgEl = document.getElementById('fruit-emoji-side');
+
+  if (titleEl) titleEl.innerHTML = `${fruit.emoji} Fruit of the day: ${fruit.name}`;
+  if (servingEl) servingEl.textContent = fruit.serving;
+  if (caloriesEl) caloriesEl.textContent = fruit.calories;
+  if (vitcEl) vitcEl.textContent = fruit.vitaminC;
+  if (fiberEl) fiberEl.textContent = fruit.fiber;
+  if (antiEl) antiEl.textContent = fruit.antioxidants;
+  if (benefitsEl) benefitsEl.textContent = fruit.benefits;
+  if (imgEl) imgEl.textContent = fruit.emoji;
+}
+
+// Initialize dynamic fruit of the day
+displayFruitOfTheDay();
