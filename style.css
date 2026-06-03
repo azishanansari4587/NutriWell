@@ -372,7 +372,7 @@ body { padding-top: 90px; }
 /* Mobile responsiveness for the video hero section (maintaining the desktop background overlay layout) */
 @media (max-width: 768px) {
   .hero-video {
-    min-height: 85vh; /* Responsive height for mobile screens */
+    min-height: 55vh; /* Responsive height for mobile screens to reduce video cropping */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -394,19 +394,19 @@ body { padding-top: 90px; }
   .hero-video-content {
     position: relative;
     z-index: 2;
-    padding: 80px 20px;
+    padding: 50px 20px; /* Reduced vertical padding */
     width: 100%;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 16px; /* Reduced gap */
     text-align: center;
   }
   
   .hv-line-1, .hv-line-2 {
-    font-size: clamp(2rem, 8vw, 3.2rem) !important; /* Bold and clean responsive font sizing */
+    font-size: clamp(1.8rem, 6vw, 2.6rem) !important; /* Bold and clean responsive font sizing */
     line-height: 1.15;
   }
   
@@ -1177,7 +1177,7 @@ body { padding-top: 90px; }
 
 /* ===== PURPOSE PAGE ===== */
 .purpose-hero { background: linear-gradient(135deg, #0f3d48 0%, #1a5c6b 60%, #9cc5b4 100%); color: white; padding: 80px 0 60px; }
-.purpose-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.purpose-hero-inner { text-align: center; max-width: 800px; margin: 0 auto; }
 .purpose-hero-text h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 14px; }
 .purpose-hero-text p { opacity: 0.9; line-height: 1.7; margin-bottom: 24px; }
 .purpose-quote-sec { background: var(--primary); padding: 60px 0; }
@@ -1296,8 +1296,6 @@ body { padding-top: 90px; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
   .prod-hero-inner { grid-template-columns: 1fr; }
-  .prod-hero-img { display: none; }
-  .purpose-hero-inner { grid-template-columns: 1fr; }
   .acronym-inner { grid-template-columns: 1fr; }
   .pq-inner { grid-template-columns: 1fr; }
   .pq-imgs { display: none; }
@@ -1314,6 +1312,14 @@ body { padding-top: 90px; }
   .asv-badges { flex-direction: column; }
   .prod-showcase-grid { grid-template-columns: 1fr; }
   .cta-card { padding: 40px 28px; }
+  .mission-img-main {
+    height: auto;
+    aspect-ratio: 16/9; /* Maintain standard aspect ratio on mobile */
+  }
+  .mission-img-float {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 @media (max-width: 480px) {
   .stats-grid { grid-template-columns: 1fr 1fr; }
