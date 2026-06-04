@@ -413,7 +413,8 @@ body { padding-top: 90px; }
   
   .hv-line-1, .hv-line-2 {
     font-size: clamp(1.8rem, 6vw, 2.6rem) !important; /* Bold and clean responsive font sizing */
-    line-height: 1.15;
+    line-height: 1.25;
+    padding-bottom: 0.1em;
   }
   
   .hv-tag {
@@ -487,16 +488,18 @@ body { padding-top: 90px; }
   display: block;
   font-size: clamp(2.8rem, 7vw, 6rem);
   font-weight: 900; color: white;
-  letter-spacing: -1px; line-height: 1.05;
+  letter-spacing: -1px; line-height: 1.2;
+  padding-bottom: 0.1em;
   animation: hvSlowReveal1 2.4s cubic-bezier(0.16,1,0.3,1) 0.3s both;
 }
 .hv-line-2 {
   display: block;
   font-size: clamp(2.8rem, 7vw, 6rem);
-  font-weight: 900; letter-spacing: -1px; line-height: 1.05;
+  font-weight: 900; letter-spacing: -1px; line-height: 1.2;
   background: linear-gradient(135deg, var(--gold), #f5d080, var(--gold));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
+  padding-bottom: 0.1em;
   animation: hvSlowReveal2 2.4s cubic-bezier(0.16,1,0.3,1) 0.7s both;
 }
 
