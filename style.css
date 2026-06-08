@@ -326,9 +326,10 @@ body { padding-top: 90px; }
 
 /* Scroll Indicator */
 .hero-scroll-indicator {
-  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  position: absolute; bottom: 32px; left: 0; right: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
   color: rgba(255,255,255,0.6); font-size: 0.75rem; z-index: 5;
+  text-align: center;
 }
 .hero-scroll-indicator span {
   display: block; width: 2px; height: 40px;
@@ -531,7 +532,7 @@ body { padding-top: 90px; }
 
 /* Keep scroll indicator on top */
 .hero-video .hero-scroll-indicator {
-  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 36px; left: 0; right: 0; transform: none;
   z-index: 3;
   animation: hvFadeUp 1s ease 2s both;
 }
@@ -1369,6 +1370,7 @@ body { padding-top: 90px; }
   background: white; border-radius: var(--radius); padding: 32px 24px;
   text-align: center; box-shadow: var(--shadow-sm);
   transition: all 0.35s; border-top: 3px solid transparent;
+  box-sizing: border-box; min-width: 0; width: 100%;
 }
 .contact-info-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-top-color: var(--primary); }
 .cic-icon {
@@ -1514,11 +1516,30 @@ body { padding-top: 90px; }
   .contact-main-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
-  .contact-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .contact-info-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 12px;
+  }
   .form-row { grid-template-columns: 1fr; }
   .social-links-contact { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
-  .contact-cards-grid { grid-template-columns: 1fr 1fr; }
+  .contact-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .contact-info-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 10px;
+    min-width: 0;
+  }
+  .contact-info-card h3 { font-size: 0.85rem; }
+  .contact-info-card p, .contact-info-card a { font-size: 0.78rem; word-break: break-all; }
   .social-links-contact { grid-template-columns: 1fr; }
 }

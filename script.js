@@ -1,46 +1,7 @@
 // ============================================================
 //  NutriWell Pharma — script.js
-//  Single-page app navigation + all interactive features
+//  Multi-page site: navigation + all interactive features
 // ============================================================
-
-// ---- PAGE NAVIGATION ----
-function showPage(pageId, linkEl) {
-  // Hide all pages
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  // Show target page
-  const target = document.getElementById('page-' + pageId);
-  if (target) target.classList.add('active');
-
-  // Update nav link active state
-  document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
-  if (linkEl) linkEl.classList.add('active');
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  // Re-trigger fade-up animations
-  if (target) {
-    target.querySelectorAll('.fade-up').forEach(el => {
-      el.style.animation = 'none';
-      el.offsetHeight; // reflow
-      el.style.animation = '';
-    });
-  }
-
-  // Trigger stat counters when About Us page is opened
-  if (pageId === 'team') {
-    setTimeout(triggerAboutCounters, 400);
-  }
-  // Replay hero animation when Home page is revisited
-  if (pageId === 'home') {
-    setTimeout(replayHeroAnim, 100);
-  }
-  // Re-start or stop product carousel based on active page
-  if (pageId === 'products') {
-    if (typeof startProductCarousel === 'function') startProductCarousel();
-  } else {
-    if (typeof stopProductCarousel === 'function') stopProductCarousel();
-  }
-}
 
 // ---- CLOSE MOBILE MENU ----
 function closeMenu() {
@@ -104,32 +65,28 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.counter-value').forEach(c => counterObserver.observe(c));
 
-// ---- ABOUT US STAT COUNTERS ----
-function triggerAboutCounters() {
-  document.querySelectorAll('#page-team .about-stat-num').forEach(el => {
-    const target = parseInt(el.dataset.target);
-    const suffix = el.dataset.suffix || '';
-    if (isNaN(target)) return;
-    let current = 0;
-    const increment = target / 50;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) { current = target; clearInterval(timer); }
-      el.textContent = Math.floor(current) + suffix;
-    }, 30);
-  });
-}
-
-// ---- RE-ANIMATE HERO TEXT ON HOME REVISIT ----
-function replayHeroAnim() {
-  const lines = document.querySelectorAll('.hv-line-1, .hv-line-2, .hv-tag, .hv-actions');
-  lines.forEach(el => {
-    el.style.animation = 'none';
-    el.offsetHeight; // reflow
-    el.style.animation = '';
-  });
-  const video = document.getElementById('heroBgVideo');
-  if (video) { video.currentTime = 0; video.play(); }
+// ---- ABOUT US STAT COUNTERS (Auto-trigger on About page) ----
+const aboutStatNums = document.querySelectorAll('.about-stat-num');
+if (aboutStatNums.length > 0) {
+  const aboutCounterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        if (isNaN(target)) return;
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) { current = target; clearInterval(timer); }
+          el.textContent = Math.floor(current) + suffix;
+        }, 30);
+        aboutCounterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  aboutStatNums.forEach(el => aboutCounterObserver.observe(el));
 }
 
 // ---- CALENDAR (Health Tips Page) ----
@@ -187,70 +144,6 @@ function buildCalendar() {
   }
 }
 buildCalendar();
-
-// ---- FOOTER CONTACT FORM ----
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('contactSubmitBtn');
-    const nameInput = document.getElementById('contactName');
-    const emailInput = document.getElementById('contactEmail');
-    const phoneInput = document.getElementById('contactPhone');
-    const messageInput = document.getElementById('contactMessage');
-
-    if (!nameInput.value.trim() || !emailInput.value.trim() || !phoneInput.value.trim() || !messageInput.value.trim()) {
-      btn.textContent = 'Fill all fields';
-      btn.style.background = '#e74c3c';
-      setTimeout(() => { btn.textContent = 'Submit'; btn.style.background = ''; }, 2000);
-      return;
-    }
-
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    btn.style.background = '#1a5c6b';
-
-    fetch('https://formsubmit.co/ajax/azishanansari4587@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        Name: nameInput.value,
-        Email: emailInput.value,
-        Phone: phoneInput.value,
-        Message: messageInput.value,
-        _subject: 'New Contact Inquiry - NutriWell Website',
-        _captcha: 'false'
-      })
-    })
-    .then(response => {
-      if (response.ok) {
-        btn.textContent = '✓ Sent!';
-        btn.style.background = '#27ae60';
-        nameInput.value = '';
-        emailInput.value = '';
-        phoneInput.value = '';
-        messageInput.value = '';
-      } else {
-        throw new Error('Submission failed');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      btn.textContent = 'Error! Try Again';
-      btn.style.background = '#e74c3c';
-    })
-    .finally(() => {
-      btn.disabled = false;
-      setTimeout(() => {
-        btn.textContent = 'Submit';
-        btn.style.background = '';
-      }, 3000);
-    });
-  });
-}
 
 // ---- CONTACT PAGE FORM (Full Page) ----
 function handleContactSubmit(e) {
@@ -332,16 +225,16 @@ let stopProductCarousel = null;
 function initProductCarousel() {
   const slides = document.querySelectorAll('.prod-carousel-slide');
   const dots = document.querySelectorAll('.prod-carousel-dots .dot');
-  
+
   if (slides.length === 0) return;
-  
+
   let currentIndex = 0;
   let autoplayTimer = null;
-  
+
   function showSlide(index) {
     slides.forEach(slide => slide.classList.remove('active'));
     dots.forEach(dot => dot.classList.remove('active'));
-    
+
     if (index >= slides.length) {
       currentIndex = 0;
     } else if (index < 0) {
@@ -349,33 +242,33 @@ function initProductCarousel() {
     } else {
       currentIndex = index;
     }
-    
+
     slides[currentIndex].classList.add('active');
     if (dots[currentIndex]) {
       dots[currentIndex].classList.add('active');
     }
   }
-  
+
   function nextSlide() {
     showSlide(currentIndex + 1);
   }
-  
+
   function prevSlide() {
     showSlide(currentIndex - 1);
   }
-  
+
   startProductCarousel = function() {
-    stopProductCarousel();
-    autoplayTimer = setInterval(nextSlide, 5000); // Transition slide every 5 seconds
+    if (autoplayTimer) clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(nextSlide, 5000);
   };
-  
+
   stopProductCarousel = function() {
     if (autoplayTimer) {
       clearInterval(autoplayTimer);
       autoplayTimer = null;
     }
   };
-  
+
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
       const targetIndex = parseInt(dot.dataset.slide);
@@ -387,34 +280,31 @@ function initProductCarousel() {
   // Mobile Touch Swipe Support
   let touchStartX = 0;
   let touchEndX = 0;
-  const swipeThreshold = 40; // minimum swipe distance in pixels
+  const swipeThreshold = 40;
   const trackEl = document.querySelector('.prod-carousel-track');
-  
+
   if (trackEl) {
     trackEl.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].clientX;
     }, { passive: true });
-    
+
     trackEl.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].clientX;
       const swipeDistance = touchEndX - touchStartX;
-      
+
       if (Math.abs(swipeDistance) > swipeThreshold) {
         if (swipeDistance < 0) {
-          nextSlide(); // Swiped left -> Next Slide
+          nextSlide();
         } else {
-          prevSlide(); // Swiped right -> Previous Slide
+          prevSlide();
         }
-        startProductCarousel(); // Reset autoplay timer
+        startProductCarousel();
       }
     }, { passive: true });
   }
 
-  // Start initially if product page is active
-  const parentPage = document.getElementById('page-products');
-  if (parentPage && parentPage.classList.contains('active')) {
-    startProductCarousel();
-  }
+  // Auto-start on products page
+  startProductCarousel();
 }
 
 initProductCarousel();
@@ -494,13 +384,11 @@ function displayFruitOfTheDay() {
     }
   ];
 
-  // Choose a fruit based on day of the year (or date)
   const now = new Date();
   const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / (86400000));
   const fruitIndex = dayOfYear % fruits.length;
   const fruit = fruits[fruitIndex];
 
-  // Update DOM elements if they exist
   const titleEl = document.getElementById('fruit-name-title');
   const servingEl = document.getElementById('fruit-serving');
   const caloriesEl = document.getElementById('fruit-calories');
@@ -520,5 +408,4 @@ function displayFruitOfTheDay() {
   if (imgEl) imgEl.textContent = fruit.emoji;
 }
 
-// Initialize dynamic fruit of the day
 displayFruitOfTheDay();
